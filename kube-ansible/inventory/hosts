@@ -1,0 +1,6 @@
+[kubemaster]
+masterserver ansible_user="{{username}}" ansible_sudo_pass="{{password}}" ansible_become=true
+
+[kubeworkers]
+node01 ansible_user="{{username}}" ansible_sudo_pass="{{password}}" ansible_become=true
+#node[01:02]

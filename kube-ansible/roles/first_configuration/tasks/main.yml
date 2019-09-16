@@ -1,0 +1,28 @@
+# - name: "Install list of packages" 
+#   apt: name={{item}} state=installed
+#   with_items:
+#           - atop
+#           - sysstat
+#           - gcc
+#           - libssl-dev
+#           - python-selinux
+#           - python-pip
+#           - python
+
+
+
+# - name: pip install -U pip
+#   pip:
+#     name: pip
+#     state: latest
+#
+ - name: Update ATP package manager repositories cache
+   become: true
+   apt: 
+     update_cache: yes
+
+ - name: Upgrade installed packages
+   become: true
+   apt: 
+     upgrade: dist
+    
