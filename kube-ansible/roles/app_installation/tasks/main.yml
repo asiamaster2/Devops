@@ -1,0 +1,10 @@
+ - name: Install docker
+   apt: 
+     name: "{{ packages }}"
+     state: present
+     update_cache: yes
+   vars:
+     packages:
+     - docker.io
+   notify:
+     - docker status
