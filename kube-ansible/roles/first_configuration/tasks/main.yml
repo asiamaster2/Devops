@@ -39,7 +39,26 @@
    shell: swapon -s
    register: check_swap
 
-
  - name: Disable swap
    command: swapoff -a
    when: not check_swap.stderr
+
+ - name: Add an apt signing key for Docker
+   apt_key:
+     url: https://download.docker.com/linux/ubuntu/gpg
+     state: present
+
+ - name: Add apt repository for stable version
+   apt_repository:
+     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+     state: present
+
+ - name: Add an apt signing key for k8s
+   apt_key:
+     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+     state: present
+
+ - name: Add apt repository for stable version
+   apt_repository:
+     repo: deb [arch=amd64] http://apt.kubernetes.io/ kubernetes-xenial main
+     state: present

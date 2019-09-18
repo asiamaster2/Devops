@@ -8,3 +8,16 @@
      - docker.io
    notify:
      - docker status
+
+
+
+ - name: Install kubernetes tools
+   apt:
+     name: "{{ packages }}"
+     state: present
+     update_cache: yes
+   vars:
+     packages:
+     - kubeadm
+     - kubelet
+     - kubectl

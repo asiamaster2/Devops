@@ -2,7 +2,12 @@
  - hosts: all
    gather_facts: false
    roles:
-    - first_configuration
+     - first_configuration
    pre_tasks:
      - name: 'install python'
        raw: sudo bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qy python-minimal)"
+
+ - hosts: all
+   gather_facts: false
+   roles:
+     - app_installation
